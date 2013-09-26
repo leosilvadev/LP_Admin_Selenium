@@ -33,6 +33,8 @@ public class FornecedorTest extends BaseTest {
 	public void testFlow(WebDriver driver) throws FileNotFoundException, IOException, InterruptedException{
 		String urlAcesso = Propriedade.getPropriedade("url.listafornecedor");
 		driver.get(urlAcesso);
+		int size = driver.findElements(By.className("item_email_fornecedor")).size();
+		
 		driver.findElement(By.className("btnNovoFornecedor")).click();
 		
 		Thread.sleep(2000);
@@ -46,11 +48,10 @@ public class FornecedorTest extends BaseTest {
 		driver.findElement(By.className("txtEmail")).sendKeys("fulano@teste.com.br");
 		Thread.sleep(1000);
 		driver.findElement(By.className("btnSalvar")).click();
-
+		
 		Thread.sleep(2000);
 		
-		Assert.assertEquals("fulano@teste.com.br", driver.findElement(By.className("item_email_fornecedor")).findElement(By.tagName("div")).getText());
-		Assert.assertEquals(1, driver.findElements(By.className("item_email_fornecedor")).size());
+		Assert.assertEquals(size+1, driver.findElements(By.className("item_email_fornecedor")).size());
 		
 		Thread.sleep(2000);
 		driver.close();

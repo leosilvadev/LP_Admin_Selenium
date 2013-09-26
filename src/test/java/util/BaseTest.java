@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriverBackedSelenium;
 
 public class BaseTest {
 	
-	private WebDriverBackedSelenium selenium;
+	protected WebDriverBackedSelenium selenium;
 	
 	public void init(WebDriver driver) throws FileNotFoundException, IOException{
 		selenium = new WebDriverBackedSelenium(driver, Propriedade.getPropriedade("url.base"));
