@@ -48,12 +48,13 @@ public class FornecedorTest extends BaseTest {
 		driver.findElement(By.className("txtEmail")).sendKeys("fulano@teste.com.br");
 		Thread.sleep(1000);
 		driver.findElement(By.className("btnSalvar")).click();
-		
+		//driver.findElement(By.className("btnCancelar")).click();
 		Thread.sleep(2000);
 		
 		Assert.assertEquals(size+1, driver.findElements(By.className("item_email_fornecedor")).size());
 		
 		Thread.sleep(2000);
+		
 		driver.close();
 	}	
 
