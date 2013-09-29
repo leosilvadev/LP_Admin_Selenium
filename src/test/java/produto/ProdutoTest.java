@@ -52,8 +52,7 @@ public class ProdutoTest extends BaseTest{
 		Thread.sleep(1000);
 		driver.findElement(By.className("dbPreco")).sendKeys("10,99");
 		Thread.sleep(1000);
-		// TODO - Ajustar teste para campo Spinner da quantidade, ver "mouseUp"
-		driver.findElement(By.className("intQuantidade")).sendKeys("1");
+		driver.findElement(By.className("intQuantidade")).findElement(By.className("z-spinner-btn-upper")).click();
 		Thread.sleep(1000);
 		
 		Select selectFornecedor = new Select(driver.findElement(By.className("lstFornecedorProduto")));
