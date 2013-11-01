@@ -1,4 +1,4 @@
-package venda;
+package pedido;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.Select;
 import util.BaseTest;
 import util.Propriedade;
 
-public class VendaTest extends BaseTest{
+public class PedidoTest extends BaseTest{
 
 	private WebDriver driver;
 
@@ -26,58 +26,64 @@ public class VendaTest extends BaseTest{
 	}
 
 	@Test
-	public void testeCadastroVenda() throws Exception{
+	public void testeCadastroPedido() throws Exception{
 		
-		String urlAcesso = Propriedade.getPropriedade("url.listavenda");
+		String urlAcesso = Propriedade.getPropriedade("url.listapedido");
 		driver.get(urlAcesso);
 		
-		driver.findElement(By.className("txtLogin")).sendKeys("leonardo");
-		Thread.sleep(300);
+		driver.findElement(By.className("txtLogin")).sendKeys("admin");
+		Thread.sleep(100);
 		
-		driver.findElement(By.className("txtSenha")).sendKeys("leonardo123");
-		Thread.sleep(300);
+		driver.findElement(By.className("txtSenha")).sendKeys("admin123");
+		Thread.sleep(100);
 		
 		driver.findElement(By.className("btnEntrar")).click();
-		Thread.sleep(300);
+		Thread.sleep(100);
 		
-		driver.findElement(By.className("btnNovaVenda")).click();
+		driver.findElement(By.className("btnNovoPedido")).click();
 		
-		Thread.sleep(300);
-		
-		driver.findElement(By.className("txtDesconto")).sendKeys("50");
-		Thread.sleep(300);
-		
+		Thread.sleep(100);
+	
 		Select selectFormaPagamento = new Select(driver.findElement(By.className("lstFormasPagamento")));
-		selectFormaPagamento.selectByIndex(1);
-		Thread.sleep(300);
+		selectFormaPagamento.selectByIndex(0);
+		Thread.sleep(100);
+		
+		Select selectForneedor = new Select(driver.findElement(By.className("lstFornecedores")));
+		selectForneedor.selectByIndex(0);
+		Thread.sleep(100);
 		
 		Select selectProduto = new Select(driver.findElement(By.className("lstProdutosDisponiveis")));
 		selectProduto.selectByIndex(0);
-		Thread.sleep(300);
+		Thread.sleep(100);
 		
 		driver.findElement(By.className("txtQuantidade")).sendKeys("2");
-		Thread.sleep(300);
+		Thread.sleep(100);
 		
 		driver.findElement(By.className("btnAdicionarProduto")).click();
-		Thread.sleep(300);		
+		
+		Thread.sleep(100);		
 		
 		Select selectFormaPagamento2 = new Select(driver.findElement(By.className("lstFormasPagamento")));
-		selectFormaPagamento2.selectByIndex(2);
-		Thread.sleep(300);
+		selectFormaPagamento2.selectByIndex(1);
+		Thread.sleep(100);
+		
+		Select selectForneedor2 = new Select(driver.findElement(By.className("lstFornecedores")));
+		selectForneedor2.selectByIndex(1);
+		Thread.sleep(100);
 		
 		Select selectProduto2 = new Select(driver.findElement(By.className("lstProdutosDisponiveis")));
 		selectProduto2.selectByIndex(1);
-		Thread.sleep(300);
+		Thread.sleep(100);
 		
 		driver.findElement(By.className("txtQuantidade")).clear();
 		driver.findElement(By.className("txtQuantidade")).sendKeys("4");
-		Thread.sleep(300);
+		Thread.sleep(100);
 		
 		driver.findElement(By.className("btnAdicionarProduto")).click();
-		Thread.sleep(300);	
+		Thread.sleep(100);	
 		
 		driver.findElement(By.className("btnSalvar")).click();
-		Thread.sleep(300);
+		Thread.sleep(100);
 		
 		driver.close();
 	}
